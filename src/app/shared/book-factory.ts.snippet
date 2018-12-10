@@ -1,9 +1,8 @@
-import { Book } from './book';
-import { BookRaw } from './book-raw';
+// ...
 
 export class BookFactory {
 
-  static empty(): Book {
+  /*BS*/static empty(): Book {
     return {
       isbn: '',
       title: '',
@@ -14,12 +13,7 @@ export class BookFactory {
       thumbnails: [{url: '', title: ''}],
       description: ''
     };
-  }
+  }/*BE*/
 
-  static fromRaw(b: BookRaw): Book {
-    return {
-      ...b,
-      published: new Date(b.published)
-    };
-  }
+  // ...
 }
