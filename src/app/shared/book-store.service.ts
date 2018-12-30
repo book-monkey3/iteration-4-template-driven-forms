@@ -36,10 +36,19 @@ export class BookStoreService {
     );
   }
 
-  // NEU
   create(book: Book): Observable<any> {
     return this.http.post(
       `${this.api}/book`,
+      book,
+      { responseType: 'text' }
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  update(book: Book): Observable<any> {
+    return this.http.put(
+      `${this.api}/book/${book.isbn}`,
       book,
       { responseType: 'text' }
     ).pipe(
@@ -64,6 +73,14 @@ export class BookStoreService {
       map(booksRaw =>
         booksRaw.map(b => BookFactory.fromRaw(b)),
       ),
+      catchError(this.errorHandler)
+    );
+  }
+
+  check(isbn: string): Observable<Boolean> {
+    return this.http.get(
+      `${this.api}/book/${isbn}/check`
+    ).pipe(
       catchError(this.errorHandler)
     );
   }
