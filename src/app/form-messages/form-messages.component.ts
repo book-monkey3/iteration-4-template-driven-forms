@@ -11,21 +11,20 @@ export class FormMessagesComponent implements OnInit {
   @Input() control: AbstractControl;
   @Input() controlName: string;
 
-
   private allMessages = {
     title: {
       required: 'Ein Buchtitel muss angegeben werden'
     },
     isbn: {
       required: 'Es muss eine ISBN angegeben werden',
-      isbnFormat: 'Die ISBN muss aus 10 oder 13 Zeichen bestehen',
-      isbnExists: 'Die ISBN existiert bereits'
+      minlength: 'Die ISBN muss mindestens 10 Zeichen haben',
+      maxlength: 'Die ISBN darf höchstens 13 Zeichen haben'
     },
     published: {
       required: 'Es muss ein Erscheinungsdatum angegeben werden'
     },
     authors: {
-      atLeastOneAuthor: 'Es muss ein Autor angegeben werden'
+      required: 'Es muss ein Autor angegeben werden'
     }
   };
 
